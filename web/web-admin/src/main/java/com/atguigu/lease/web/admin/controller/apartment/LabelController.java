@@ -24,7 +24,6 @@ public class LabelController {
     @Operation(summary = "（根据类型）查询标签列表")
     @GetMapping("list")
     public Result<List<LabelInfo>> labelList(@RequestParam(required = false) ItemType type) {
-        System.out.println(type);
         LambdaQueryWrapper<LabelInfo> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(type !=null,LabelInfo::getType, type);
         List<LabelInfo> list = service.list(queryWrapper);
